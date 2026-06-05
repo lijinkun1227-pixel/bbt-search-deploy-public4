@@ -1,0 +1,12 @@
+# Netlify 只部署前端（apps/web），API 部署在 Render
+[build]
+  base = "apps/web"
+  # 相对 base 目录；不可与 base 相同，否则 Next.js 插件报错
+  publish = ".next"
+  command = "npm ci && npm run build"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

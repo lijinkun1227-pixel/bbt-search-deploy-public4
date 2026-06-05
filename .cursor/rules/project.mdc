@@ -1,0 +1,10 @@
+---
+description: Big Bang quote finder conventions
+globs: "**/*"
+---
+
+- Monorepo root; Python path includes repo root for `apps.api` and `pipeline`
+- Time fields in milliseconds
+- Video source: local MKV/MP4 only; clips go to Supabase Storage bucket `clips`
+- Secrets only in `deploy/.env`, never commit
+- User has S01E01–E02 only for MVP

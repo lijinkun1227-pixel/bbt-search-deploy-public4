@@ -1,0 +1,26 @@
+# Render 部署 Python API（在 Render Dashboard 选 "Blueprint" 导入本文件，或手动创建 Web Service）
+services:
+  - type: web
+    name: bigbang-quote-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn apps.api.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.0"
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: SUPABASE_STORAGE_BUCKET
+        value: clips
+      - key: PUBLIC_WEB_URL
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: SOURCE_VIDEO_ROOT
+        value: /tmp/source_videos
